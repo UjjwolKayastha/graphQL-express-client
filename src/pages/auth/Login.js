@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/authContext";
-import { auth } from "../../firebase";
+import { auth, googleAuthProvider } from "../../firebase";
 
 const Login = () => {
   const { dispatch } = useContext(AuthContext);
@@ -41,6 +41,24 @@ const Login = () => {
     }
   };
 
+  const googleLogin = async () => {
+    await auth.signInWithPopup(googleAuthProvider).then(async (result) => {
+      const { user } = result;
+      const idTokenResult = await user.getIdTokenResult();
+
+      dispatch({
+        type: "LOGGED_IN_USER",
+        payload: { email: user.email, token: idTokenResult.token },
+      });
+
+      //send user info to server
+
+      //redirect
+      history.push("/");
+      toast.success("Logged in successfully.");
+    });
+  };
+
   return (
     <div className="container">
       {loading ? (
@@ -48,7 +66,13 @@ const Login = () => {
       ) : (
         <h4 className="text-primary mt-4">Login</h4>
       )}
-
+      <button
+        onClick={googleLogin}
+        className="btn btn-raised btn-danger mt-4 mb-3"
+      >
+        Login with Google
+      </button>
+      ;
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Email</label>
