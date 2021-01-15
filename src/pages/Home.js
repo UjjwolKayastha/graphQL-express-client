@@ -43,21 +43,22 @@ const Home = () => {
   return (
     <div className="container">
       <div className="row p-5">
-        {data.allPosts.map((p) => (
-          <div key={p.id} className="col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <div className="card-title">
-                  <h4>{p.title}</h4>
+        {data &&
+          data.allPosts.map((p) => (
+            <div key={p.id} className="col-md-4">
+              <div className="card">
+                <div className="card-body">
+                  <div className="card-title">
+                    <h4>{p.title}</h4>
+                  </div>
+                  <div className="card-text">{p.description}</div>
+                  <hr />
                 </div>
-                <div className="card-text">{p.description}</div>
-                <hr />
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
-      {/* <p>{JSON.stringify(state.user)}</p> */}
+      <p>{JSON.stringify(state.user)}</p>
       {/* <buttton className="btn btn-primary" onClick={() => updateUserName()}>
         Change Username
       </buttton> */}
