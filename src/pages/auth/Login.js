@@ -3,6 +3,17 @@ import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/authContext";
 import { auth, googleAuthProvider } from "../../firebase";
+import { useMutation } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
+
+const CREATE_USER = gql`
+  mutation createUser {
+    userCreate {
+      username
+      email
+    }
+  }
+`;
 
 const Login = () => {
   const { dispatch } = useContext(AuthContext);
@@ -11,6 +22,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  const [createUser] = useMutation(CREATE_USER);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +34,7 @@ const Login = () => {
         .then(async (result) => {
           const { user } = result;
           const idTokenResult = await user.getIdTokenResult();
+          console.log(idTokenResult.token);
 
           dispatch({
             type: "LOGGED_IN_USER",
@@ -28,6 +42,7 @@ const Login = () => {
           });
 
           //send user info to server
+          createUser();
 
           //redirect
           history.push("/");
@@ -52,6 +67,7 @@ const Login = () => {
       });
 
       //send user info to server
+      createUser();
 
       //redirect
       history.push("/");
