@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import AuthForm from "../../components/forms/AuthForm";
 
 const CREATE_USER = gql`
   mutation createUser {
@@ -75,36 +76,16 @@ const CompleteRegistration = () => {
       ) : (
         <h4 className="text-primary">Continue Registration</h4>
       )}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            className="form-control pl-1"
-            type="email"
-            value={email}
-            placeholder="example@example.com"
-            onChange={(e) => setEmail(e.target.value)}
-            disabled
-          />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            className="form-control pl-1"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={loading}
-          />
-        </div>
-
-        <button
-          className="btn btn-raised btn-primary"
-          disabled={!email || loading}
-        >
-          Register
-        </button>
-      </form>
+      <AuthForm
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        loading={loading}
+        handleSubmit={handleSubmit}
+        buttonName={"Register"}
+        showPasswordInput
+      />
     </div>
   );
 };
