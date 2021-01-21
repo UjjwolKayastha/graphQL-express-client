@@ -12,6 +12,8 @@ import Register from "./pages/auth/Register";
 import CompleteRegistration from "./pages/auth/CompleteRegistration";
 
 import { AuthContext } from "./context/authContext";
+import PrivateRoute from "./components/PrivateRoute";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
 const App = () => {
   const { state } = useContext(AuthContext);
@@ -41,6 +43,13 @@ const App = () => {
           path="/complete-registration"
           component={CompleteRegistration}
         />
+        <PrivateRoute
+          exact
+          path="/password/forgot"
+          component={ForgotPassword}
+        />
+        <PrivateRoute exact path="/profile" component={ForgotPassword} />
+        <PrivateRoute exact path="/post/create" component={ForgotPassword} />
       </Switch>
     </ApolloProvider>
   );

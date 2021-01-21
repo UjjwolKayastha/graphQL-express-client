@@ -4,6 +4,7 @@ import { gql } from "apollo-boost";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
 import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
+import Sider from "../components/Sider/index";
 
 const GET_ALL_POSTS = gql`
   {
