@@ -1,11 +1,10 @@
 import React, { Fragment, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth } from "firebase";
 import { AuthContext } from "../context/authContext";
 
 const Nav = () => {
   const { state, dispatch } = useContext(AuthContext);
-  let history = useHistory();
 
   const { user } = state;
 
