@@ -17,7 +17,7 @@ const GET_ALL_POSTS = gql`
 `;
 
 const Home = () => {
-  const { data, loading, error } = useQuery(GET_ALL_POSTS);
+  // const { data, loading, error } = useQuery(GET_ALL_POSTS);
 
   const [
     fetchPosts,
@@ -28,7 +28,7 @@ const Home = () => {
   //   console.log("POSTS", posts);
 
   //access context
-  const { state, dispatch } = useContext(AuthContext);
+  // const { state, dispatch } = useContext(AuthContext);
 
   //   const updateUserName = () => {
   //     dispatch({
@@ -40,10 +40,10 @@ const Home = () => {
   //   let history = useHistory();
   //   console.log(history);
 
-  if (loading) return <p className="p-5">Loading....</p>;
+  // if (loading) return <p className="p-5">Loading....</p>;
   return (
     <div className="container">
-      <div className="row p-5">
+      {/* <div className="row p-5">
         {data &&
           data.allPosts.map((p) => (
             <div key={p.id} className="col-md-4">
@@ -58,8 +58,8 @@ const Home = () => {
               </div>
             </div>
           ))}
-      </div>
-      <p>{JSON.stringify(state.user)}</p>
+      </div> */}
+      {/* <p>{JSON.stringify(state.user)}</p> */}
       {/* <buttton className="btn btn-primary" onClick={() => updateUserName()}>
         Change Username
       </buttton> */}

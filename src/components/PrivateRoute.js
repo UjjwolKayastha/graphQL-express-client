@@ -1,17 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route,useHistory } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Sider from "./Sider";
+export const PrivateRoute = ({  ...rest }) => {
+  console.log({...rest})
+  const history = useHistory();
 
-export const PrivateRoute = ({ rest }) => {
   const { state } = useContext(AuthContext);
 
-  const { user } = state;
   console.log("STATE", state);
-
-  if (!user) {
-    return <h4>Loading...</h4>;
-  }
 
   // return <Route {...props} />;
   const renderContent = () => (
@@ -24,8 +21,12 @@ export const PrivateRoute = ({ rest }) => {
       </div>
     </div>
   );
-
-  // if (user) {
-  return renderContent();
-  // }
+  
+  if (state.user) {
+    return renderContent();
+  }
+  else {
+    history.push('/login');
+    return <h4>Loading...</h4>;
+  }
 };

@@ -15,6 +15,7 @@ const Nav = () => {
       payload: null,
     });
   };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
@@ -36,7 +37,7 @@ const Nav = () => {
         <ul className="navbar-nav mr-auto">
           {user && (
             <li className="nav-item active">
-              <Link className="nav-link" to="/login">
+              <Link className="nav-link" to="/profile">
                 {user && user.email.split("@")[0]}
               </Link>
             </li>
