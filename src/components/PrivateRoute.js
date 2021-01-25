@@ -1,21 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Sider from "./Sider";
 
-const PrivateRoute = ({ ...rest }) => {
+export const PrivateRoute = ({ rest }) => {
   const { state } = useContext(AuthContext);
-  const [user, setUser] = useState(false);
 
-  useEffect(() => {
-    if (state.user) {
-      setUser(true);
-    }
-  }, [state.user]);
-
+  const { user } = state;
   console.log("STATE", state);
-  console.log("USER", user);
 
+  if (!user) {
+    return <h4>Loading...</h4>;
+  }
+
+  // return <Route {...props} />;
   const renderContent = () => (
     <div className="container-fluid pt-5">
       <div className="row">
@@ -27,7 +25,7 @@ const PrivateRoute = ({ ...rest }) => {
     </div>
   );
 
-  return user ? renderContent() : <h4>Loading...</h4>;
+  // if (user) {
+  return renderContent();
+  // }
 };
-
-export default PrivateRoute;

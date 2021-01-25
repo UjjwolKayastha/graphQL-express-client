@@ -11,7 +11,7 @@ const Sider = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/password/forgot">
+          <Link className="nav-link" to="/password/update">
             Change Password
           </Link>
         </li>
