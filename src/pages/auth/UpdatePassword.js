@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AuthForm from "../../components/forms/AuthForm";
 import { auth } from "../../firebase";
+import { toast } from "react-toastify";
 
 const UpdatePassword = () => {
   const [password, setPassword] = useState("");
@@ -14,9 +15,11 @@ const UpdatePassword = () => {
       await auth.currentUser.updatePassword(password);
       setPassword("");
       setLoading(false);
+      toast.success("Password updated successfully.");
     } catch (e) {
       setLoading(false);
       console.log("Password update error", e);
+      toast.error(e);
     }
   };
   return (
