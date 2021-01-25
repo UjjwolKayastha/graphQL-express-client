@@ -16,6 +16,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import UpdatePassword from "./pages/auth/UpdatePassword";
 import Profile from "./pages/auth/Profile";
 import Post from "./pages/post/Post";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
 const App = () => {
   const { state } = useContext(AuthContext);
@@ -53,6 +54,7 @@ const App = () => {
           />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/post/create" component={Post} />
+          <Route exact path="/password/forgot" component={ForgotPassword} />
         </Switch>
       </ApolloProvider>
     </BrowserRouter>

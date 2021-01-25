@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/authContext";
 import { auth, googleAuthProvider } from "../../firebase";
@@ -99,6 +99,9 @@ const Login = () => {
         buttonName={"Login"}
         showPasswordInput
       />
+      <Link className="text-danger float-right" to="/password/forgot">
+        Forgot Password?
+      </Link>
     </div>
   );
 };
