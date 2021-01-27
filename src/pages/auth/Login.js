@@ -4,17 +4,10 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../context/authContext";
 import { auth, googleAuthProvider } from "../../firebase";
 import { useMutation } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 import AuthForm from "../../components/forms/AuthForm";
+import { CreateUser } from '../../graphql/mutations';
 
-const CREATE_USER = gql`
-  mutation createUser {
-    userCreate {
-      username
-      email
-    }
-  }
-`;
+
 
 const Login = () => {
   const { dispatch } = useContext(AuthContext);
@@ -24,7 +17,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const [createUser] = useMutation(CREATE_USER);
+  const [createUser] = useMutation(CreateUser);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

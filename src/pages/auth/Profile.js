@@ -1,44 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 import ProfileUpdateForm from "../../components/forms/ProfileUpdateForm";
-
-const GetUserProfile = gql`
-  query {
-    profile {
-      _id
-      name
-      email
-      username
-      images {
-        url
-        public
-      }
-      about
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-const UpdateUserProfile = gql`
-  mutation userUpdate($input: UserUpdateInput!) {
-    userUpdate(input: $input) {
-      _id
-      name
-      email
-      username
-      images {
-        url
-        public
-      }
-      about
-      createdAt
-      updatedAt
-    }
-  }
-`;
+import { GetUserProfile } from "../../graphql/queries";
+import { UpdateUserProfile } from "../../graphql/mutations";
 
 const Profile = () => {
   const [values, setValues] = useState({
@@ -51,7 +16,6 @@ const Profile = () => {
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    console.log("CLICKED");
   };
 
   const handleImageChange = () => {};
