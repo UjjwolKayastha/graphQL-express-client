@@ -6627,7 +6627,7 @@ is-plain-obj@^1.0.0:
   resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
   integrity sha1-caUMhCnfync8kqOQpKA7OfzVHT4=
 
-is-plain-object@^2.0.3, is-plain-object@^2.0.4:
+is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
   integrity sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==
@@ -8265,6 +8265,14 @@ obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/obuf/-/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
   integrity sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==
+
+omit-deep@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/omit-deep/-/omit-deep-0.3.0.tgz#21c8af3499bcadd29651a232cbcacbc52445ebec"
+  integrity sha1-IcivNJm8rdKWUaIyy8rLxSRF6+w=
+  dependencies:
+    is-plain-object "^2.0.1"
+    unset-value "^0.1.1"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -11535,6 +11543,14 @@ unquote@~1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/unquote/-/unquote-1.1.1.tgz#8fded7324ec6e88a0ff8b905e7c098cdc086d544"
   integrity sha1-j97XMk7G6IoP+LkF58CYzcCG1UQ=
+
+unset-value@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/unset-value/-/unset-value-0.1.2.tgz#506810b867f27c2a5a6e9b04833631f6de58d310"
+  integrity sha1-UGgQuGfyfCpabpsEgzYx9t5Y0xA=
+  dependencies:
+    has-value "^0.3.1"
+    isobject "^3.0.0"
 
 unset-value@^1.0.0:
   version "1.0.0"
