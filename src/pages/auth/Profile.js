@@ -4,6 +4,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import ProfileUpdateForm from "../../components/forms/ProfileUpdateForm";
 import { GetUserProfile } from "../../graphql/queries";
 import { UpdateUserProfile } from "../../graphql/mutations";
+import omitDeep from "omit-deep";
 
 const Profile = () => {
   const [values, setValues] = useState({
@@ -31,7 +32,7 @@ const Profile = () => {
         name: data.profile.name,
         email: data.profile.email,
         about: data.profile.about,
-        images: data.profile.images,
+        images: omitDeep(data.profile.images, ["__typename"]),
       });
     }
   }, [data]);
