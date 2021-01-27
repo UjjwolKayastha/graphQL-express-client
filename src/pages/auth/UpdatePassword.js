@@ -7,13 +7,12 @@ const UpdatePassword = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      await auth.currentUser.updatePassword(password);
-      setPassword("");
+      auth.currentUser.updatePassword(password);
       setLoading(false);
       toast.success("Password updated successfully.");
     } catch (e) {
