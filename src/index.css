@@ -1,0 +1,21 @@
+#image-container {
+  position: relative;
+}
+
+#delete {
+  display: none;
+  position: absolute;
+  right: 7px;
+  z-index: 100;
+  opacity: 0.8;
+  text-align: left;
+}
+
+#image {
+  background-color: blue;
+  margin-right: 5px;
+}
+
+#image-container:hover #delete {
+  display: inline-block;
+}
