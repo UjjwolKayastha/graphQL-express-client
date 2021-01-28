@@ -8,7 +8,7 @@ export const USER_INFO = gql`
     username
     images {
       url
-      public
+      public_id
     }
     about
     createdAt
