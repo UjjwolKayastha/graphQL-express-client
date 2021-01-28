@@ -6,6 +6,8 @@ import { GetUserProfile } from "../../graphql/queries";
 import { UpdateUserProfile } from "../../graphql/mutations";
 import omitDeep from "omit-deep";
 
+import FileUpload from "../../components/FileUpload";
+
 const Profile = () => {
   const [values, setValues] = useState({
     username: "",
@@ -18,8 +20,6 @@ const Profile = () => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
-  const handleImageChange = () => {};
 
   //get user info
   const { data, loading } = useQuery(GetUserProfile);
@@ -53,13 +53,13 @@ const Profile = () => {
   return (
     <>
       <h3 className="text-info">Profile Update</h3>
+      <FileUpload loading={loading} values={values} setValues={setValues} />
       {data && (
         <ProfileUpdateForm
           {...values}
           loading={loading}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          handleImageChange={handleImageChange}
         />
       )}
     </>
