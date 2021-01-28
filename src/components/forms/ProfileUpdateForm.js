@@ -3,7 +3,6 @@ import React from "react";
 const ProfileUpdateForm = ({
   handleSubmit,
   handleChange,
-  handleImageChange,
   loading,
   username,
   email,
@@ -48,16 +47,7 @@ const ProfileUpdateForm = ({
           placeholder="Email"
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="">Image</label>
-        <input
-          className="form-control"
-          disabled={loading}
-          type="file"
-          accept="image/*" //accepts file types with any extension
-          onChange={handleImageChange}
-        />
-      </div>
+
       <div className="form-group">
         <label htmlFor="">About</label>
         <textarea
