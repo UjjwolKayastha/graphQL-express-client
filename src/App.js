@@ -19,6 +19,7 @@ import Post from "./pages/post/Post";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import Error404 from "./pages/Error404";
 import { PublicRoute } from "./components/PublicRoute";
+import Users from "./pages/Users";
 
 const App = () => {
   const { state } = useContext(AuthContext);
@@ -43,6 +44,7 @@ const App = () => {
         <Switch>
           <PublicRoute exact path="/login" component={Login} />
           <PublicRoute exact path="/register" component={Register} />
+          <Route exact path="/all-users" component={Users} />
           <PublicRoute
             exact
             path="/complete-registration"
