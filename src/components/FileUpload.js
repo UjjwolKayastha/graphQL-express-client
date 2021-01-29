@@ -4,13 +4,13 @@ import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { AuthContext } from "../context/authContext";
 import { toast } from "react-toastify";
-import Image from "./Image";
+import UserImage from "./UserImage";
 
 const FileUpload = ({ loading, values, setValues }) => {
   const { state } = useContext(AuthContext);
   const { images } = values;
 
-  console.log("IMAGES", values);
+  // console.log("IMAGES", values);
   const fileResizeAndUpload = (event) => {
     let fileInput = false;
     if (event.target.files[0]) {
@@ -107,7 +107,7 @@ const FileUpload = ({ loading, values, setValues }) => {
         style={{ display: "flex", flexDirection: "row" }}
       >
         {images.map((image) => (
-          <Image image={image} handleImageRemove={handleImageRemove} />
+          <UserImage image={image} handleImageRemove={handleImageRemove} />
         ))}
       </div>
     </div>
