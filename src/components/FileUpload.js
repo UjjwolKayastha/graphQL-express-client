@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { AuthContext } from "../context/authContext";
 import { toast } from "react-toastify";
+import Image from "./Image";
 
 const FileUpload = ({ loading, values, setValues }) => {
   const { state } = useContext(AuthContext);
@@ -107,21 +107,7 @@ const FileUpload = ({ loading, values, setValues }) => {
         style={{ display: "flex", flexDirection: "row" }}
       >
         {images.map((image) => (
-          <div key={image.public_id} id="image-container">
-            <img
-              key={image.public_id}
-              height="100px"
-              src={image.url}
-              alt={image.public_id}
-              id="image"
-            />
-            <span
-              id="delete"
-              onClick={() => handleImageRemove(image.public_id)}
-            >
-              <FontAwesomeIcon icon={faTrash} />
-            </span>
-          </div>
+          <Image image={image} handleImageRemove={handleImageRemove} />
         ))}
       </div>
     </div>
