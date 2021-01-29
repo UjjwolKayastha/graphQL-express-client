@@ -1,28 +1,17 @@
 import React, { useContext } from "react";
 
-import { gql } from "apollo-boost";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
 import { AuthContext } from "../context/authContext";
-import { useHistory } from "react-router-dom";
-import Sider from "../components/Sider/index";
 
-const GET_ALL_POSTS = gql`
-  {
-    allPosts {
-      id
-      title
-      description
-    }
-  }
-`;
+import { GetAllPosts } from "../graphql/queries";
 
 const Home = () => {
-  const { data, loading, error } = useQuery(GET_ALL_POSTS);
+  const { data, loading, error } = useQuery(GetAllPosts);
 
   const [
     fetchPosts,
     { data: posts, loading: postsLoading, error: postsError },
-  ] = useLazyQuery(GET_ALL_POSTS);
+  ] = useLazyQuery(GetAllPosts);
 
   //   console.log("DATA", data);
   //   console.log("POSTS", posts);
