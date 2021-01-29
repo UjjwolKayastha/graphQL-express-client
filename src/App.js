@@ -10,7 +10,6 @@ import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import CompleteRegistration from "./pages/auth/CompleteRegistration";
-import error404 from "./pages/Error404";
 
 import { AuthContext } from "./context/authContext";
 import { PrivateRoute } from "./components/PrivateRoute";
@@ -19,6 +18,7 @@ import Profile from "./pages/auth/Profile";
 import Post from "./pages/post/Post";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import Error404 from "./pages/Error404";
+import { PublicRoute } from "./components/PublicRoute";
 
 const App = () => {
   const { state } = useContext(AuthContext);
@@ -41,12 +41,17 @@ const App = () => {
         <Nav />
         <ToastContainer />
         <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route
+          <PublicRoute exact path="/login" component={Login} />
+          <PublicRoute exact path="/register" component={Register} />
+          <PublicRoute
             exact
             path="/complete-registration"
             component={CompleteRegistration}
+          />
+          <PublicRoute
+            exact
+            path="/password/forgot"
+            component={ForgotPassword}
           />
           <PrivateRoute
             exact
@@ -55,7 +60,6 @@ const App = () => {
           />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/post/create" component={Post} />
-          <Route exact path="/password/forgot" component={ForgotPassword} />
           <PrivateRoute exact path="/" component={Home} />
           <Route path="*" component={Error404} />
         </Switch>

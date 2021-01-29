@@ -1,14 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, Route, useHistory } from "react-router-dom";
+import React, { useContext } from "react";
+import { Route } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Sider from "./Sider";
 import Redirect from "./Redirect";
 export const PrivateRoute = ({ path, component, ...rest }) => {
-  const history = useHistory();
-
   const { state } = useContext(AuthContext);
-
-  console.log("STATE", state);
 
   // return <Route {...props} />;
   const renderContent = () => (
