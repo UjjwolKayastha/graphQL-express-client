@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Sider from "./Sider";
+import Redirect from "./Redirect";
 export const PrivateRoute = ({ path, component, ...rest }) => {
   const history = useHistory();
 
@@ -20,12 +21,10 @@ export const PrivateRoute = ({ path, component, ...rest }) => {
       </div>
     </div>
   );
-  
+
   if (state.user) {
     return renderContent();
-  }
-  else {
-    history.push('/login');
-    return <h4>Loading...</h4>;
+  } else {
+    return <Redirect path="/login" />;
   }
 };
